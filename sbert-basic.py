@@ -3,18 +3,15 @@ import matplotlib.pyplot as plt
 from sentence_transformers import SentenceTransformer
 from sklearn.decomposition import PCA
 
-
 # 1. Load a pretrained Sentence Transformer model
 model = SentenceTransformer("all-MiniLM-L6-v2")
-
 
 with open('data/sentences.txt', 'r', encoding='utf-8') as file:
     sentences = file.readlines()
 
 # 2. Calculate embeddings by calling model.encode()
 s_embeddings = model.encode(sentences)
-
-
+print(s_embeddings.shape)
 
 # Reduce dimensionality to 2D
 pca = PCA(n_components=2)
